@@ -2,6 +2,7 @@ CREATE TABLE `NBA3`.`Player` ( `id` INT NOT NULL AUTO_INCREMENT ,
 							   `first_name` VARCHAR(50) NOT NULL , 
 							   `last_name` VARCHAR(50) NOT NULL , 
 							   `birth_date` DATE NULL , 
+							   `numberOfYearsInLeague` INT NULL ,
 							    PRIMARY KEY (`id`))
 
 /*-------------------------------------------------------------------------------*/
@@ -60,4 +61,22 @@ CREATE TABLE `NBA3`.`FDS` ( `id` INT NOT NULL AUTO_INCREMENT ,
 						    `fanduelPoints` DOUBLE NULL , 
 						    `draftkingPoints` DOUBLE NULL , 
 						     PRIMARY KEY (`id`))
+						     
+/*-------------------------------------------------------------------------------*/
+						     
+CREATE TABLE `NBA3`.`Position_Name` ( `id` INT NOT NULL , 
+									  `name` VARCHAR(20) NOT NULL , 
+									   PRIMARY KEY (`id`)) 
+									   
+/*-------------------------------------------------------------------------------*/
+									   
+CREATE TABLE `NBA3`.`PlayerPosition` ( `player_Id` INT NOT NULL , 
+									   `positionCanPlay` INT NOT NULL ,
+									    FOREIGN KEY (`player_Id`) REFERENCES Player(`id`),
+									    FOREIGN KEY (`positionCanPlay`) REFERENCES Position_Name(`id`),
+									    UNIQUE( `player_Id`, `positionCanPlay` ))
+									   
+									   
+									   
+									   
                              
