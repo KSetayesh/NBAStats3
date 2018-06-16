@@ -8,13 +8,18 @@ import constants.NBAYearEnum;
 
 public class DateUtil {
 	
-	private final static SimpleDateFormat DATE_FORMATTER = new SimpleDateFormat("MM/dd/yyyy");
+	private final static String DEFAULT_DATE_FORMAT = "MM/dd/yyyy";
 	private final static String PLAYOFFS = "Playoffs";
 	
 	private DateUtil(){}
 	
-	public static Date getDateOfGame(final String date) throws ParseException{
-		return DATE_FORMATTER.parse(date);
+	public static Date getDate(final String date) throws ParseException{
+		return getDate(date, DEFAULT_DATE_FORMAT);
+	}
+	
+	public static Date getDate(final String date, final String dateFormat) throws ParseException{
+	    final SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);  
+		return sdf.parse(date);
 	}
 	
 	public static NBAYearEnum getNBAYear(final String data) throws Exception{

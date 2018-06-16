@@ -90,7 +90,6 @@ public class ConfigHandler {
 			throw new Exception("Must have same number of data for each of the 3 maps");
 		}
 		
-			
 	}
 	
 	private Integer getFileNumber(final String currentLine){
