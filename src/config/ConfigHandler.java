@@ -72,6 +72,11 @@ public class ConfigHandler {
 		
 		br.close();
 		
+		
+		if(filePathMap.size() != fileTypeMap.size() && fileTypeMap.size() != readFromFileMap.size()){
+			throw new Exception("Must have same number of data for each of the 3 maps");
+		}
+		
 		int counter = 1;
 		while(filePathMap.containsKey(counter) && 
 			  fileTypeMap.containsKey(counter) &&

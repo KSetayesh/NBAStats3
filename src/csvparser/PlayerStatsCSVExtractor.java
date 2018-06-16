@@ -47,7 +47,7 @@ public class PlayerStatsCSVExtractor extends CSVExtractor {
 	}
 	
 	public NBAYearEnum getNBAYear(final String row) throws Exception{
-		return DateUtil.getNBAYear(splitArray(row)[NBA_YEAR_INDEX]);
+		return parseNBAYear(splitArray(row)[NBA_YEAR_INDEX]);
 	}
 	
 	public Date getDateOfGame(final String row) throws ParseException{
@@ -231,7 +231,20 @@ public class PlayerStatsCSVExtractor extends CSVExtractor {
 	protected String [] splitArray(final String row){
 		return row.split(",");
 	}
-
+	
+	private NBAYearEnum parseNBAYear(final String data) throws Exception{
+		int yr = -1;
+		if(data.contains(PLAYOFFS)){
+			yr = Integer.parseInt(data.substring(0, data.indexOf(" "))) - 1;
+		}
+		else{
+			yr = Integer.parseInt(data.substring(0, data.indexOf("-")));
+		}
+		if(yr == -1){
+			throw new Exception("Invalid data found at rowNum ");
+		}
+		
+		return NBAYearEnum.valueOf("_" + yr);
+	}
 	
 }
-
