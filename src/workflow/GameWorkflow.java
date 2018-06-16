@@ -1,27 +1,28 @@
 package workflow;
 
-import java.util.Date;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
+import java.util.Set;
 
 import data.GameDetail;
 
 
 public class GameWorkflow {
 
-	public Map<String, GameDetail> getAllGames() throws Exception{
+	public List<GameDetail> getAllGames() throws Exception{
 		
 		final List<String> dataArray = PlayerStatisticsCSVParser.parsePlayerStatisticsCSVFile();
-		final Map<String, GameDetail> gameDetailsMap = new HashMap<>();
+		final Set<GameDetail> gameDetailsSet = new HashSet<>();
 		
 		for(final String data : dataArray){
 			final GameDetail gameDetail = buildGameObject(data);
-			final String dateOfGame = createDateKey(gameDetail.getDate());
-			gameDetailsMap.put(dateOfGame, gameDetail); 
+			gameDetailsSet.add(gameDetail); 
 		}
 		
-		return gameDetailsMap;
+		final List<GameDetail> gameDetailsList = new ArrayList<>(gameDetailsSet);
+		
+		return gameDetailsList;
 		
 	}
 	
@@ -34,10 +35,6 @@ public class GameWorkflow {
 							   PlayerStatisticsCSVParser.isPlayOffGame(row));
 		 
 	}
-	
-	private String createDateKey(final Date dateOfGame){ 
-		return dateOfGame.toString();
-		
-	}
+	 
 	 
 }

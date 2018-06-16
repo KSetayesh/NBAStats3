@@ -1,0 +1,57 @@
+NBAStats3 Explained
+-----------------------------
+
+Parser
+-Read data using jsoup from www.basketball-reference.com
+-Take team statistics and player game statistics and insert it into an oracle database.
+-For each player/game add all the different variables into database ex..
+    -# of days rest before last game
+    -opposing teams defensive statistics
+    -opposing team’s opposing players’ (by position) defensive statistics
+    -5 game streaks/averages (ex. 20 + points 5 consecutive games)
+    -10 game streaks/averages
+    -15 game streaks/averages
+    -has home court advantage
+
+-Server is on a local host
+-2 databases (player/team game statistics, and dfs statistics)
+
+Statistics Creator
+-For each player and game take the ratio of (fanDuelPoints / Salary ).
+ The higher the number is the better player performed for his given salary.
+-For each player plot points on a graph of all performances in a given year. Where the x-axis is the date of the game and the y-axis
+ is the ratio between (fanDuelPoints / Salary).
+-Run a regression test on each player (line of best fit). For example Lebron James in 2015 equation was   y = 0.3776x + 214.4903
+-Split the games into 4 sectors and check to see which one of the variables mentioned above are showing consistencies in those ranges.
+   ex: For all games 50% above regression line (player performed really well) we see that ~75% of these games the player played
+       against bad teams, and that for games 50% below regression line (player performed really bad) we see that ~25% of these games
+       were against bad teams, than we know this variable is important to a players performance.
+-The more significant a variable appears to be for a given player the more weighted the variable will be when performing predictions
+ for a players performance.
+-Once all that is done we run a bunch of tests manipulating variable weights and see which test shows the least amount of error
+ for a players performance (our fdp's vs actual fdp's). Whichever test shows the least error we will use that to assign fdp for
+ players playing on a given day.
+-Once we assign fan duel points for players than we use the knapsack algorithm to create a team.
+
+
+-Projects I've worked on at work
+1) Refractoring fees for deposits and withdrawals. Created configuration table to gather correct fee depending on different variables,
+   such as deposit/withdrawal type, customer acct, currency etc...
+
+2) importer.genericParser: generic parser that parses csv, docs, excel files based on a configuration files to extract bank statement
+   data.
+
+3) deposit.settler: Created a project that queries for all deposits that haven't been settled yet. For each deposit check to see which
+   bank statement it links to. Search for returns on bank statement if there are check to see if they have been reconciled. If they
+   haven't been reconciled then check for returns in cashiering based on rejected bank activities value date. Cache's all
+   bank statements based on statement date and bankaccount id.
+
+4) supplemental matcher: Search for all bulk type activities that have not yet been matched for a given statement. Check for all
+   supplemental activities that not yet been matched for a given statement. Match them based on bankActivityType of
+   supplementals and bulk type. Different matching algorithms are used to match them. One to one, One to many, zero sum.
+   If all bulks have been matched, but there are supplementals remaining attempt second level matching. Second level matching occurs
+   when there is a suspense type matched to a bulk.
+
+5) Compliance flagger: Alerts staff of any suspicious cash deposits.
+
+6) Implemented Bill Pay withdrawals, returns, and updating payee name to the cashiering api.
