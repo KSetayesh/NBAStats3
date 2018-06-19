@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import config.CSVStatsColumns;
 import config.StatisticsFile;
 import constants.NBAYearEnum;
 import constants.PositionEnum;
@@ -59,7 +60,7 @@ public class PlayerGameStatisticsWorkflow {
 	private PlayerGameStats buildPlayerGameStatisticsRequestsObject(final String row) throws Exception{
 		
 		final CSVExtractor csvExtractor = CSVExtractorFactory.getCSVExtractor(statsFile.getFileType()); 
-	  
+	 
 		return new PlayerGameStats( csvExtractor.getFirstName(row),
 								    csvExtractor.getLastName(row),
 								    csvExtractor.getNBAYear(row), 

@@ -115,7 +115,7 @@ public class PlayerStatsCSVExtractor extends CSVExtractor {
 		return getTeam(data);
 	}
 	
-	public TeamEnum getOpponentTeam(final String row){
+	public TeamEnum getOpposingTeam(final String row){
 		final String data = splitArray(row)[OPPONENT_TEAM_INDEX];
 		return getTeam(data);
 	}
@@ -130,7 +130,7 @@ public class PlayerStatsCSVExtractor extends CSVExtractor {
 		if(venueEnum.equals(VenueEnum.H)){
 			return getOwnTeam(row);
 		}
-		return getOpponentTeam(row);
+		return getOpposingTeam(row);
 		
 	}
 	

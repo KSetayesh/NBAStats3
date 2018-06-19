@@ -25,10 +25,14 @@ public class GameWorkflow {
 		final List<String> dataArray = csvFile.parseCSVFile();
 		final Set<GameDetail> gameDetailsSet = new HashSet<>();
 		
+	 
+		
 		for(final String data : dataArray){
 			final GameDetail gameDetail = buildGameObject(data);
 			gameDetailsSet.add(gameDetail); 
 		}
+		
+		
 		
 		final List<GameDetail> gameDetailsList = new ArrayList<>(gameDetailsSet);
 		
@@ -45,6 +49,7 @@ public class GameWorkflow {
 							   csvExtractor.isPlayOffGame(row));
 		 
 	}
+	
 	 
 	 
 }

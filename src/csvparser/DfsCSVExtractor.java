@@ -13,8 +13,7 @@ import util.DateUtil;
 public class DfsCSVExtractor extends CSVExtractor{ 
 
 	private final static int PLAYER_ID_INDEX = 0;
-	private final static int LAST_NAME_INDEX = 1;
-	private final static int FIRST_NAME_INDEX = 1;	// both first name and last are at index 1, not type
+	private final static int NAME_INDEX = 1;
 	private final static int FULL_NAME_INDEX = 2;
 	private final static int DATE_OF_GAME_INDEX = 3;
 	private final static int OWN_TEAM_INDEX = 4;
@@ -44,6 +43,10 @@ public class DfsCSVExtractor extends CSVExtractor{
 		
 	}
 	
+	public String getPlayerId(String row){
+		return splitArray(row)[PLAYER_ID_INDEX];
+	}
+	
 	public boolean isPlayOffGame(String row) {
 		return false;
 	}
@@ -51,7 +54,6 @@ public class DfsCSVExtractor extends CSVExtractor{
 	public NBAYearEnum getNBAYear(String row) throws Exception {
 		final String nbaYrStr = "_" + splitArray(row)[DATE_OF_GAME_INDEX].substring(0, 5);
 		return NBAYearEnum.valueOf(nbaYrStr);
-		
 	}
 	
 	public Date getDateOfGame(String row) throws ParseException {
@@ -59,15 +61,19 @@ public class DfsCSVExtractor extends CSVExtractor{
 	}
 	
 	public String getFirstName(String row) {
-		final String fullName = splitArray(row)[FIRST_NAME_INDEX];
+		final String fullName = splitArray(row)[NAME_INDEX];
 		final String [] split = fullName.split(",");
 		return split[1].trim();
 	}
 
 	public String getLastName(String row) {
-		final String fullName = splitArray(row)[FIRST_NAME_INDEX];
+		final String fullName = splitArray(row)[NAME_INDEX];
 		final String [] split = fullName.split(",");
-		return split[1].trim();
+		return split[0].trim();
+	}
+	
+	public String getFullName(String row){
+		return splitArray(row)[FULL_NAME_INDEX];
 	}
 
 	public Set<PositionEnum> getPositions(String row) {
@@ -80,7 +86,7 @@ public class DfsCSVExtractor extends CSVExtractor{
 		return null;
 	}
 
-	public TeamEnum getOpponentTeam(String row) {
+	public TeamEnum getOpposingTeam(String row) {
 		
 		return null;
 	}

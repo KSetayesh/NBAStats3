@@ -20,7 +20,7 @@ public abstract class CSVExtractor {
 	public abstract String getLastName(final String row);
 	public abstract Set<PositionEnum> getPositions(final String row);
 	public abstract TeamEnum getOwnTeam(final String row);
-	public abstract TeamEnum getOpponentTeam(final String row);
+	public abstract TeamEnum getOpposingTeam(final String row);
 	public abstract VenueEnum getVenue(final String row);
 	public abstract TeamEnum getHomeTeam(final String row);
 	public abstract TeamEnum getAwayTeam(final String row);

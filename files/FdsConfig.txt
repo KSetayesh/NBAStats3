@@ -1,0 +1,54 @@
+# FilePath_1 is file with players game stats
+FilePath_1: /Users/Kevin_Setayesh/Desktop/2014-2016 NBA Player Data/NBA-2015-2016-Player-BoxScore-Dataset/2015-2016-Table 1.csv
+FileType_1: PLAYER_STATS 
+#FileColumns_1: DATA SET,DATE,PLAYER FULL NAME,POSITION,OWN TEAM,OPP TEAM,VENUE (R/H),MIN,FG,FGA,3P,3PA,FT,FTA,OR,DR,TOT,A,PF,ST,TO,BL,PTS
+
+# FilePath_2 has all the positions of the players, playerIds and fds salaries, and points
+FilePath_2: /Users/Kevin_Setayesh/Desktop/2014-2016 NBA Player Data/NBA-2015-2016-Player-BoxScore-Dataset/2015-2016_New_NBA_data.txt
+FileType_2: DFS_DATA 
+#FileColumns_2: GID:Last, First:First Last:Date:Team:Opp:H/A:Team pts:Opp pts:Start:Minutes:GP:active:FDP:DKP:DDP:SFP:Stats:FD Sal:DK Sal:DD Sal:SF Sal:FD pos:DK pos:DD pos:SF pos:
+
+MergingLogic: 
+Columns                | FileType#       | Column# | 
+PlayerId 	       	   | 2               | 0       |
+FirstName  	       	   | 2               | 1       |
+LastName  	    	   | 2               | 1       |
+NBAYear			       | 1               | 0       |
+DateOfGame	 	       | 2               | 3       |
+OwnTeam			       | 2               | 4       |
+OpposingTeam	       | 2               | 5       |
+Venue 		       	   | 1               | 6       |
+MinutesPlayed 	       | 1               | 7       |
+FieldGoalsMade         | 1               | 8       |
+FieldGoalsAttempted    | 1               | 9       | 
+ThreePointersMade      | 1               | 10      |
+ThreePointersAttempted | 1               | 11      |
+FreeThrowsMade 	       | 1               | 12      |
+FreeThrowsAttempted    | 1               | 13      |
+OffensiveRebounds      | 1               | 14      |
+DefensiveRebounds      | 1               | 15      |
+TotalRebounds 	       | 1               | 16      |
+Assists 	       	   | 1               | 17      |
+PersonalFouls 	       | 1               | 18      |
+Steals   	           | 1               | 19      |
+TurnOvers 	       	   | 1               | 20      |
+Blocks 		       	   | 1               | 21      |
+Points   	       	   | 1               | 22      |
+TeamPoints  	       | 2               | 7       |
+OpposingTeamPoints     | 2               | 8       | 
+DidStart 	       	   | 2     	         | 9       |
+PlayedGame	           | 2               | 11      |
+IsActive  	   	       | 2               | 12      |
+FanDuelPoints 	       | 2               | 13      |
+DraftKingPoints        | 2               | 14      |
+DraftDayPoints 	       | 2               | 15      |
+StarFantasyPoints      | 2               | 16      |
+FanDuelSalary  	       | 2               | 18      |
+DraftKingSalary        | 2               | 19      |
+DraftDaySalary 	       | 2               | 20      |
+StarFantasySalary      | 2               | 21      |
+FanDuelPositions       | 2               | 22      | 
+DraftKingPositions     | 2               | 23      | 
+DraftDayPositions      | 2               | 24      | 
+StarFantasyPositions   | 2               | 25      |
+____________________________________________________

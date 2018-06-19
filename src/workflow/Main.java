@@ -18,11 +18,13 @@ public class Main {
 //		final Map<String, Integer> playerIds = dfsPlayerGameStatsWorkflow.getRotoGuruPlayerIds();
 
 		for(final StatisticsFile statsFile : statisticsFiles){
-			final GameWorkflow gameWorkflow = new GameWorkflow(statsFile);
-			final List<GameDetail> games = gameWorkflow.getAllGames();
 			
-			final PlayerGameStatisticsWorkflow pgsw = new PlayerGameStatisticsWorkflow(statsFile);
-			final List<PlayerGameStats> playerGameStats = pgsw.getAllPlayerGameStatisticsData();
+			statsFile.printMap();
+//			final GameWorkflow gameWorkflow = new GameWorkflow(statsFile);
+//			final List<GameDetail> games = gameWorkflow.getAllGames();
+//			
+//			final PlayerGameStatisticsWorkflow pgsw = new PlayerGameStatisticsWorkflow(statsFile);
+//			final List<PlayerGameStats> playerGameStats = pgsw.getAllPlayerGameStatisticsData();
 			
 		}
 		
@@ -30,5 +32,7 @@ public class Main {
 		
 		
 	}
+	
+	
 	
 }
